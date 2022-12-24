@@ -1,4 +1,3 @@
 controllers:
-    resource:
-        path: ../src/UI/
+    resource: ../src/UI/
     type: attribute
