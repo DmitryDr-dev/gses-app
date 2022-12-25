@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\UI\ExchangeRate\Http\Controller\Dto;
+namespace App\UI\ExchangeRate\Http\Dto;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
-class GetCurrencyConversionRequestDto
+class GetExchangeRateRequestDto
 {
     #[Assert\NotBlank]
     #[Assert\Type('string')]
