@@ -15,6 +15,11 @@ framework:
     php_errors:
         log: true
 
+    http_client:
+        scoped_clients:
+            exchangeRateHost:
+                base_uri: '%env(EXCHANGE_RATE_HOST_BASE_URL)%'
+
 when@test:
     framework:
         test: true
