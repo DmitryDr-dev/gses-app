@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\UI\User\Http\Controller\CreateUser;
+namespace App\UI\User\Http\Controller;
 
 use App\Application\User\Command\CreateUser\CreateUserCommand;
-use App\UI\User\Http\Controller\CreateUser\Dto\CreateUserRequestDto;
-use App\UI\User\Http\Controller\CreateUser\Dto\CreateUserResponseDto;
+use App\UI\User\Http\Dto\Request\CreateUserRequestDto;
+use App\UI\User\Http\Dto\Response\UserPayload;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -38,8 +38,8 @@ class CreateUserController extends AbstractController
 
 
         return new JsonResponse(
-            data: CreateUserResponseDto::create($user),
-            status: 200,
+            data: UserPayload::create($user),
+            status: Response::HTTP_OK,
         );
     }
 }

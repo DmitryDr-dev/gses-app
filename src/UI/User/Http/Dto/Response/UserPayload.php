@@ -1,10 +1,12 @@
 <?php
 
-namespace App\UI\User\Http\Controller\CreateUser\Dto;
+declare(strict_types=1);
+
+namespace App\UI\User\Http\Dto\Response;
 
 use App\Domain\User\User;
 
-class CreateUserResponseDto
+class UserPayload
 {
     public static function create(User $user): self
     {
@@ -17,7 +19,7 @@ class CreateUserResponseDto
     }
 
     private function __construct(
-        public int $id,
+        public int    $id,
         public string $firstName,
         public string $lastName,
         public string $email,

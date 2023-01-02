@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\UI\ExchangeRate\Http\Controller\GetExchangeRate\Dto;
+namespace App\UI\ExchangeRate\Http\Dto\Request;
 
 use App\UI\Shared\Http\Request\BaseRequest;
 use Symfony\Component\Validator\Constraints as Assert;

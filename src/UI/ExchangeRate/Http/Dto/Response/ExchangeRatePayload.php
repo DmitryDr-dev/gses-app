@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\UI\ExchangeRate\Http\Controller\GetExchangeRate\Dto;
+namespace App\UI\ExchangeRate\Http\Dto\Response;
 
 use App\Application\ExchangeRate\Service\ApiClient\Response\ExchangeRateResponse;
 
-class GetExchangeRateResponseDto
+class ExchangeRatePayload
 {
     public static function create(ExchangeRateResponse $result): self
     {

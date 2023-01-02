@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\UI\ExchangeRate\Http\Controller\GetExchangeRate;
+namespace App\UI\ExchangeRate\Http\Controller;
 
 use App\Application\ExchangeRate\Query\GetExchangeRate\GetExchangeRateQuery;
 use App\Application\ExchangeRate\Service\ApiClient\Response\ExchangeRateResponse;
-use App\UI\ExchangeRate\Http\Controller\GetExchangeRate\Dto\GetExchangeRateRequestDto;
-use App\UI\ExchangeRate\Http\Controller\GetExchangeRate\Dto\GetExchangeRateResponseDto;
+use App\UI\ExchangeRate\Http\Dto\Request\GetExchangeRateRequestDto;
+use App\UI\ExchangeRate\Http\Dto\Response\ExchangeRatePayload;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,7 +25,7 @@ class GetExchangeRateController extends AbstractController
         $this->messageBus = $queryBus;
     }
 
-    #[Route('/convert', name: 'convert', methods: ['POST'])]
+    #[Route('/exchange-rate/convert', name: 'convert', methods: ['POST'])]
     public function __invoke(GetExchangeRateRequestDto $request): Response
     {
         $request->validate();
@@ -41,8 +41,8 @@ class GetExchangeRateController extends AbstractController
         );
 
         return new JsonResponse(
-            data: GetExchangeRateResponseDto::create($result),
-            status: 200
+            data: ExchangeRatePayload::create($result),
+            status: Response::HTTP_OK,
         );
     }
 }
