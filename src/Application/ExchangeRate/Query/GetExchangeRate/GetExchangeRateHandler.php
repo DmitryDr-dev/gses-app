@@ -18,9 +18,9 @@ class GetExchangeRateHandler
     public function __invoke(GetExchangeRateQuery $query): ExchangeRateResponse
     {
         return $this->client->getExchangeRate(
-            $query->getSourceCurrency(),
-            $query->getTargetCurrency(),
-            $query->getSourceAmount(),
+            sourceCurrency: $query->getSourceCurrency(),
+            targetCurrency: $query->getTargetCurrency(),
+            sourceAmount: $query->getSourceAmount(),
         );
     }
 }
