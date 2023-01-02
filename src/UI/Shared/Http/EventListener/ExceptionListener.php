@@ -30,6 +30,7 @@ class ExceptionListener
                     event: $event,
                     statusText: Response::$statusTexts[Response::HTTP_INTERNAL_SERVER_ERROR],
                     code: Response::HTTP_INTERNAL_SERVER_ERROR,
+                    message: $exception->getMessage(),
                 );
         }
     }

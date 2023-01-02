@@ -27,7 +27,7 @@ class CreateUserController extends AbstractController
     public function __invoke(CreateUserRequestDto $request): Response
     {
         $request->validate();
-        $data = $request->getRequest()->toArray();
+        $data = $request->convertToArray();
         $user = $this->handle(
             new CreateUserCommand(
                 firstName: $data['firstName'],

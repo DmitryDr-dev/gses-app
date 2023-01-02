@@ -38,6 +38,11 @@ class BaseRequest
         }
     }
 
+    public function convertToArray(): array
+    {
+        return $this->getRequest()->toArray();
+    }
+
     public function getRequest(): Request
     {
         return Request::createFromGlobals();
@@ -45,7 +50,7 @@ class BaseRequest
 
     private function populate(): void
     {
-        foreach ($this->getRequest()->toArray() as $key => $value) {
+        foreach ($this->convertToArray() as $key => $value) {
             if (property_exists($this, $key)) {
                 $this->{$key} = $value;
             }
