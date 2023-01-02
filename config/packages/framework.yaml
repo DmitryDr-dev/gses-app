@@ -18,7 +18,7 @@ framework:
     http_client:
         scoped_clients:
             exchangeRateHost:
-                base_uri: '%env(EXCHANGE_RATE_HOST_BASE_URL)%'
+                base_uri: '%env(EXCHANGE_RATE_HOST_TRANSPORT_BASE_URL)%'
 
 when@test:
     framework:
