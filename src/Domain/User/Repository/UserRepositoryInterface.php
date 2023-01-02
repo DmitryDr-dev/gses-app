@@ -8,5 +8,8 @@ use App\Domain\User\User;
 
 interface UserRepositoryInterface
 {
-    public function save(User $entity, bool $flush = false): void;
+    public function save(User $entity, bool $flush): void;
+
+    /** @return User[] */
+    public function getAll(int $limit, int $offset): array;
 }

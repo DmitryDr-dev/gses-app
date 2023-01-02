@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\UI\User\Http\Controller\CreateUser\Dto;
+namespace App\UI\User\Http\Dto\Request;
 
 use App\UI\Shared\Http\Request\BaseRequest;
 use Symfony\Component\Validator\Constraints as Assert;
