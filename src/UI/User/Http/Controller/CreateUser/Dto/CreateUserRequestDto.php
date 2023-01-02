@@ -4,27 +4,21 @@ declare(strict_types=1);
 
 namespace App\UI\User\Http\Controller\CreateUser\Dto;
 
+use App\UI\Shared\Http\Request\BaseRequest;
 use Symfony\Component\Validator\Constraints as Assert;
 
-class CreateUserRequestDto
+class CreateUserRequestDto extends BaseRequest
 {
     #[Assert\NotBlank]
     #[Assert\Type('string')]
-    public $firstName;
+    protected $firstName;
 
     #[Assert\NotBlank]
     #[Assert\Type('string')]
-    public $lastName;
+    protected $lastName;
 
     #[Assert\NotBlank]
     #[Assert\Type('string')]
     #[Assert\Email]
-    public $email;
-
-    public function __construct($firstName, $lastName, $email)
-    {
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
-        $this->email = $email;
-    }
+    protected $email;
 }

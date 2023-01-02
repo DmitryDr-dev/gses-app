@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\UI\User\Http\Controller\CreateUser;
 
 use App\Application\User\Command\CreateUser\CreateUserCommand;
+use App\UI\User\Http\Controller\CreateUser\Dto\CreateUserRequestDto;
 use App\UI\User\Http\Controller\CreateUser\Dto\CreateUserResponseDto;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Messenger\HandleTrait;
 use Symfony\Component\Messenger\MessageBusInterface;
@@ -24,10 +24,10 @@ class CreateUserController extends AbstractController
     }
 
     #[Route('user/create', name: 'create-user', methods: ['POST'])]
-    public function __invoke(Request $request): Response
+    public function __invoke(CreateUserRequestDto $request): Response
     {
-        $data = $request->toArray();
-
+        $request->validate();
+        $data = $request->getRequest()->toArray();
         $user = $this->handle(
             new CreateUserCommand(
                 firstName: $data['firstName'],
@@ -35,6 +35,7 @@ class CreateUserController extends AbstractController
                 email: $data['email'],
             )
         );
+
 
         return new JsonResponse(
             data: CreateUserResponseDto::create($user),
