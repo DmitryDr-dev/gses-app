@@ -17,3 +17,6 @@ services:
         tags:
             - { name: kernel.event_listener, event: kernel.exception }
 
+    App\Component\MailerService\Application\Service\MailerService:
+        arguments:
+            $senderAddress: '%env(resolve:SENDER_ADDRESS)%'
